@@ -1,5 +1,5 @@
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import React from "react";
 
 import { themeColor, useTheme } from "react-native-rapi-ui";
 import TabBarIcon from "../components/utils/TabBarIcon";
@@ -36,6 +36,18 @@ const MainTabs = () => {
         }}
       />
       <Tabs.Screen
+        name="New"
+        component={New}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <TabBarText focused={focused} title="New" />
+          ),
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={"pencil"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="Profile"
         component={Profile}
         options={{
@@ -44,18 +56,6 @@ const MainTabs = () => {
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"person"} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="New"
-        component={New}
-        options={{
-          tabBarLabel: ({ focused }) => (
-            <TabBarText focused={focused} title="New" />
-          ),
-          tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} icon={"ios-information-circle"} />
           ),
         }}
       />
