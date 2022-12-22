@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 
-import SecondScreen from "../screens/SecondScreen";
+import RecipePage from "../screens/RecipePage";
 import MainTabs from "./MainTabs";
 
 const MainStack = createNativeStackNavigator();
@@ -14,7 +14,9 @@ const Main = () => {
       }}
     >
       <MainStack.Screen name="MainTabs" component={MainTabs} />
-      <MainStack.Screen name="SecondScreen" component={SecondScreen} />
+      <MainStack.Screen name="RecipePage">
+        {(props) => <RecipePage {...props} />}
+      </MainStack.Screen>
     </MainStack.Navigator>
   );
 };

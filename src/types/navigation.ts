@@ -1,16 +1,17 @@
 export type MainStackParamList = {
-	MainTabs: undefined;
-	SecondScreen: undefined;
+  MainTabs: undefined;
+  RecipePage: undefined;
 };
 
 export type AuthStackParamList = {
-	Login: undefined;
-	Register: undefined;
-	ForgetPassword: undefined;
+  Login: undefined;
+  Register: undefined;
+  ForgetPassword: undefined;
 };
 
 export type MainTabsParamList = {
-	Home: undefined;
-	Profile: undefined;
-	About: undefined;
+  Home: undefined;
+  MealPlans: undefined;
+  Profile: undefined;
+  New: undefined;
 };

@@ -8,6 +8,7 @@ import TabBarText from "../components/utils/TabBarText";
 import Home from "../screens/Home";
 import New from "../screens/New";
 import Profile from "../screens/Profile";
+import PlansFeed from "../screens/mealplans/PlansFeed";
 
 const Tabs = createBottomTabNavigator();
 const MainTabs = () => {
@@ -32,6 +33,18 @@ const MainTabs = () => {
           ),
           tabBarIcon: ({ focused }) => (
             <TabBarIcon focused={focused} icon={"md-home"} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Meal Plans"
+        component={PlansFeed}
+        options={{
+          tabBarLabel: ({ focused }) => (
+            <TabBarText focused={focused} title="Meal Plans" />
+          ),
+          tabBarIcon: ({ focused }) => (
+            <TabBarIcon focused={focused} icon={"md-book"} />
           ),
         }}
       />

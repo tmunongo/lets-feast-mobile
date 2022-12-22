@@ -8,4 +8,5 @@ export type Recipe = {
   image_url: string;
   ingredients: string[];
   name: string;
+  prep_time: number;
 };

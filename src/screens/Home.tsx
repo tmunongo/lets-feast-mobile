@@ -1,7 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useContext, useEffect, useState } from "react";
-import { Dimensions, StyleSheet, View } from "react-native";
+import { Dimensions, ScrollView, StyleSheet, View } from "react-native";
 import {
   Layout,
   Section,
@@ -15,6 +15,7 @@ import { supabase } from "../initSupabase";
 import { AuthContext } from "../providers/AuthProvider";
 import { MainStackParamList } from "../types/navigation";
 import { Recipe } from "../types/recipe";
+import Loading from "./utils/Loading";
 
 // import { Recipe } from "../types/recipe";
 
@@ -50,7 +51,8 @@ export default function ({
   return (
     <Layout>
       <TopNav
-        middleContent="Home"
+        middleContent="Let's Feast!"
+        // right content
         rightContent={
           <Ionicons
             name={isDarkmode ? "sunny" : "moon"}
@@ -65,29 +67,45 @@ export default function ({
             setTheme("dark");
           }
         }}
+        // left content
+        leftContent={
+          <Ionicons
+            name={"menu"}
+            size={20}
+            color={isDarkmode ? themeColor.white100 : themeColor.dark}
+          />
+        }
       />
-      <View
+
+      <ScrollView
         style={{
+          backgroundColor: "#D5D1DC",
           flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
 
           flexGrow: 1,
           width: "100%",
         }}
+        contentContainerStyle={{
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Section style={styles.section}>
           <SectionContent>
-            {data?.recipeData.map((item: Recipe, index: number) => {
-              return (
-                <View style={styles.recipe} key={index}>
-                  <RecipeComponent recipe={item} />
-                </View>
-              );
-            })}
+            {data?.recipeData ? (
+              data?.recipeData.map((item: Recipe, index: number) => {
+                return (
+                  <View style={styles.recipe} key={index}>
+                    <RecipeComponent recipe={item} />
+                  </View>
+                );
+              })
+            ) : (
+              <Loading />
+            )}
           </SectionContent>
         </Section>
-      </View>
+      </ScrollView>
     </Layout>
   );
 }
@@ -98,8 +116,8 @@ const styles = StyleSheet.create({
     boxShadow: "28px 28px 57px #bebebe -28px -28px 57px #ffffff",
   },
   section: {
-    height: Dimensions.get("screen").height - 20,
-    marginTop: 120,
+    height: Dimensions.get("screen").height,
+    // marginTop: 120,
     padding: 2,
   },
 });
