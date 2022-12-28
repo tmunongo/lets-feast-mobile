@@ -4,4 +4,4 @@ The React Native mobile app for my Let's Feast chef's companion. Serverless back
 
 ### Links
 
-[Web Version](lf.tawandamunongo.tech)
+[Web Version](https://lf.tawandamunongo.tech)
